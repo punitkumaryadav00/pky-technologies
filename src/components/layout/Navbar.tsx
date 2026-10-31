@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { PKYLogo } from "@/components/ui/PKYLogo";
 
 const services = [
   {
@@ -72,16 +73,8 @@ export function Navbar() {
         }`}
       >
         <nav className="pky-container flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group z-10" aria-label="PKY Technologies Home">
-            <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[var(--pky-accent)] to-[var(--pky-cyan)] flex items-center justify-center font-bold text-white text-sm overflow-hidden">
-              <span className="relative z-10">P</span>
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--pky-accent-dark)] to-[var(--pky-accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <span className="text-lg font-semibold tracking-tight">
-              PKY<span className="text-[var(--pky-text-secondary)] font-normal"> Technologies</span>
-            </span>
-          </Link>
+          {/* Official Brand Logo */}
+          <PKYLogo variant="navbar" className="z-10" />
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">

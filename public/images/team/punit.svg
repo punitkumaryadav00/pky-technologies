@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c18"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="suit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(0,210,255,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <rect width="600" height="450" fill="url(#grid)"/>
+
+  <!-- Radiant Aura behind head -->
+  <circle cx="300" cy="190" r="140" fill="none" stroke="url(#glow)" stroke-width="2" opacity="0.35"/>
+  <circle cx="300" cy="190" r="110" fill="none" stroke="#00d2ff" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.4"/>
+
+  <!-- Shoulders & Blazer -->
+  <path d="M 120 450 C 120 300, 200 290, 270 310 L 300 370 L 330 310 C 400 290, 480 300, 480 450 Z" fill="url(#suit)" stroke="rgba(0,210,255,0.3)" stroke-width="2"/>
+  <!-- Shirt collar -->
+  <path d="M 270 310 L 300 360 L 330 310 L 300 270 Z" fill="#ffffff" opacity="0.9"/>
+  <path d="M 292 315 L 300 360 L 308 315 Z" fill="#00d2ff"/>
+
+  <!-- Head -->
+  <ellipse cx="300" cy="190" rx="72" ry="85" fill="#1e293b" stroke="url(#glow)" stroke-width="3"/>
+
+  <!-- Modern Hair -->
+  <path d="M 228 170 C 225 110, 375 110, 372 170 C 350 130, 250 130, 228 170 Z" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
+
+  <!-- Tech Glasses -->
+  <rect x="245" y="175" width="46" height="28" rx="8" fill="none" stroke="#00d2ff" stroke-width="3"/>
+  <rect x="309" y="175" width="46" height="28" rx="8" fill="none" stroke="#00d2ff" stroke-width="3"/>
+  <line x1="291" y1="188" x2="309" y2="188" stroke="#00d2ff" stroke-width="3"/>
+
+  <!-- Corner Crosshairs -->
+  <path d="M 30 50 L 30 30 L 50 30" fill="none" stroke="#00d2ff" stroke-width="2" opacity="0.6"/>
+  <path d="M 570 50 L 570 30 L 550 30" fill="none" stroke="#00d2ff" stroke-width="2" opacity="0.6"/>
+  <path d="M 30 400 L 30 420 L 50 420" fill="none" stroke="#00d2ff" stroke-width="2" opacity="0.6"/>
+  <path d="M 570 400 L 570 420 L 550 420" fill="none" stroke="#00d2ff" stroke-width="2" opacity="0.6"/>
+
+  <!-- Monogram Badge -->
+  <rect x="220" y="390" width="160" height="40" rx="20" fill="#0a0f1d" stroke="#00d2ff" stroke-width="2" opacity="0.95"/>
+  <text x="300" y="416" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="15" text-anchor="middle" letter-spacing="3">PUNIT (PKY)</text>
+</svg>

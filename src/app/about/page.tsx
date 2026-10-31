@@ -15,6 +15,7 @@ import { MarqueeBanner } from "@/components/ui/MarqueeBanner";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ScanlineCard } from "@/components/ui/ScanlineCard";
 import { Counter } from "@/components/ui/Counter";
+import { FoundersSection } from "@/components/home/FoundersSection";
 
 export const metadata: Metadata = {
   title: "About Us | PKY Technologies — Engineering Digital Dominance",
@@ -321,6 +322,9 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Leadership & Founders Section */}
+      <FoundersSection isDark={false} />
 
       {/* Reverse Outlined Marquee Banner before CTA */}
       <div className="my-16">

@@ -66,26 +66,46 @@ export function VoxelHero3D() {
     const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 400);
     camera.position.set(0, 0, 48);
 
-    // Build the 3D Voxel "P" Monogram
+    // Build the 3D Voxel "PKY" Monogram
     const voxels: [number, number, number][] = [];
     const layers = 3; // 3 voxel layers in Z depth
-    for (let x = 0; x < 16; x++) {
+    const step = 0.65;
+    for (let x = 0; x < 36; x++) {
       for (let y = 0; y < 18; y++) {
-        const inStem = x >= 2 && x <= 4 && y >= 0 && y <= 17;
-        const inTop = x >= 5 && x <= 11 && y >= 14 && y <= 17;
-        const inRight = x >= 11 && x <= 13 && y >= 8 && y <= 15;
-        const inMid = x >= 5 && x <= 11 && y >= 7 && y <= 9;
+        // P Monogram
+        const pStem = x >= 1 && x <= 3 && y >= 0 && y <= 17;
+        const pTop = x >= 3 && x <= 9 && y >= 14 && y <= 17;
+        const pRight = x >= 7 && x <= 9 && y >= 7 && y <= 15;
+        const pMid = x >= 3 && x <= 9 && y >= 7 && y <= 10;
+        const isP = pStem || pTop || pRight || pMid;
 
-        if (inStem || inTop || inRight || inMid) {
+        // K Monogram
+        const kStem = x >= 12 && x <= 14 && y >= 0 && y <= 17;
+        const kdx = x - 13;
+        const inKUp = kdx >= 0 && kdx <= 8 && Math.abs(y - (7.5 + kdx * 1.15)) <= 1.5;
+        const inKDown = kdx >= 0 && kdx <= 8 && Math.abs(y - (9.5 - kdx * 1.15)) <= 1.5;
+        const isK = kStem || inKUp || inKDown;
+
+        // Y Monogram
+        const yStem = x >= 28 && x <= 30 && y >= 0 && y <= 8;
+        const yLeft = (x >= 23 && x <= 29) && Math.abs(y - (8 + (29 - x) * 1.6)) <= 1.5;
+        const yRight = (x >= 29 && x <= 35) && Math.abs(y - (8 + (x - 29) * 1.6)) <= 1.5;
+        const isY = yStem || yLeft || yRight;
+
+        if (isP || isK || isY) {
           for (let z = 0; z < layers; z++) {
-            voxels.push([x - 8, y - 9, z - (layers - 1) / 2]);
+            voxels.push([
+              (x - 18.0) * step,
+              (y - 8.5) * step,
+              (z - 1) * step,
+            ]);
           }
         }
       }
     }
 
     const cubeCount = voxels.length;
-    const geometry = new THREE.BoxGeometry(0.88, 0.88, 0.88);
+    const geometry = new THREE.BoxGeometry(0.58, 0.58, 0.58);
     const material = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       roughness: 0.35,
@@ -177,14 +197,21 @@ export function VoxelHero3D() {
 
       // Adjust camera distance for mobile vs desktop
       if (width < 768) {
-        camera.position.z = 58;
+        camera.position.z = 64;
         group.position.x = 0;
-        group.position.y = 2;
+        group.position.y = 2.5;
+        group.scale.set(0.65, 0.65, 0.65);
+      } else if (width < 1024) {
+        camera.position.z = 48;
+        group.position.x = 8.5;
+        group.position.y = 0;
+        group.scale.set(0.78, 0.78, 0.78);
       } else {
         camera.position.z = 46;
-        // Shift voxel "P" slightly to the right side on desktop so headline has space
-        group.position.x = 10;
+        // Position PKY nicely centered in the right panel
+        group.position.x = 13.5;
         group.position.y = 0;
+        group.scale.set(0.85, 0.85, 0.85);
       }
 
       camera.updateProjectionMatrix();
@@ -318,7 +345,7 @@ export function VoxelHero3D() {
       style={{ height: "280vh" }}
     >
       {/* Sticky Pinned Viewport */}
-      <section className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[var(--pky-bg-primary)]">
+      <section className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[var(--pky-bg-primary)] pt-16 sm:pt-20">
         {/* Subtle Tech Grid Background */}
         <div
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
@@ -330,10 +357,10 @@ export function VoxelHero3D() {
         />
 
         {/* Technical Corner Crosshairs (like Cannyworx) */}
-        <div className="absolute top-24 left-8 w-6 h-6 border-t-2 border-l-2 border-cyan-400/35 pointer-events-none" />
-        <div className="absolute top-24 right-8 w-6 h-6 border-t-2 border-r-2 border-cyan-400/35 pointer-events-none" />
-        <div className="absolute bottom-10 left-8 w-6 h-6 border-b-2 border-l-2 border-cyan-400/35 pointer-events-none" />
-        <div className="absolute bottom-10 right-8 w-6 h-6 border-b-2 border-r-2 border-cyan-400/35 pointer-events-none" />
+        <div className="absolute top-20 left-8 w-6 h-6 border-t-2 border-l-2 border-cyan-400/35 pointer-events-none" />
+        <div className="absolute top-20 right-8 w-6 h-6 border-t-2 border-r-2 border-cyan-400/35 pointer-events-none" />
+        <div className="absolute bottom-12 left-8 w-6 h-6 border-b-2 border-l-2 border-cyan-400/35 pointer-events-none" />
+        <div className="absolute bottom-12 right-8 w-6 h-6 border-b-2 border-r-2 border-cyan-400/35 pointer-events-none" />
 
         {/* Three.js 3D Voxel WebGL Canvas */}
         <canvas
@@ -345,76 +372,81 @@ export function VoxelHero3D() {
             STATE 1: INITIAL HERO CONTENT (Fades out on scroll)
             ========================================================= */}
         <div
-          className="relative z-20 pky-container pt-28 pb-16 h-full flex flex-col justify-center transition-all duration-300"
+          className="relative z-20 pky-container flex-1 flex items-center min-h-0 py-2 sm:py-4 transition-all duration-300"
           style={{
             opacity: heroOpacity,
             transform: `translateY(${scrollProgress * -60}px)`,
             pointerEvents: heroOpacity > 0.3 ? "auto" : "none",
           }}
         >
-          <div className="max-w-2xl">
-            {/* Status Badges */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-6">
-              <span className="pky-badge">
-                <span className="w-2 h-2 rounded-full bg-[var(--pky-cyan)] animate-pulse shadow-[0_0_8px_var(--pky-cyan)]" />
-                HUMAN × AI STUDIO
-              </span>
-              <span className="px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/70 text-xs font-mono text-slate-300 tracking-wider">
-                ENGINEERING-FIRST
-              </span>
-              <span className="px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/70 text-xs font-mono text-slate-300 tracking-wider hidden sm:inline-block">
-                DESIGN • CODE • AGENTS
-              </span>
-            </div>
+          <div className="grid lg:grid-cols-12 gap-8 items-center w-full">
+            {/* Left Column: Text content perfectly proportioned */}
+            <div className="lg:col-span-6 xl:col-span-6 max-w-xl z-20">
+              {/* Status Badges */}
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="pky-badge text-xs">
+                  <span className="w-2 h-2 rounded-full bg-[var(--pky-accent-light)] animate-pulse" />
+                  Your Digital Growth Partner
+                </span>
+              </div>
 
-            {/* Giant Main Headline */}
-            <h1 className="pky-heading-display mb-6 tracking-tight text-white leading-[0.92]">
-              Look{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
-                10x
-              </span>
-              <br />
-              <span className="pky-gradient-text">bigger.</span>
-            </h1>
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.12] mb-3 sm:mb-4">
+                Your Business{" "}
+                <span className="pky-gradient-text">Deserves More</span>{" "}
+                Than Just a Website
+              </h1>
 
-            <p className="pky-body text-lg mb-8 max-w-xl text-slate-200 font-normal leading-relaxed">
-              We design and build high-performance websites, AI autonomous agents,
-              and digital platforms that make growing businesses look like category
-              leaders. Sub-second speed and measurable revenue engineering.
-            </p>
+              <p className="pky-body text-xs sm:text-sm md:text-base text-slate-300 mb-5 sm:mb-6 max-w-lg leading-relaxed">
+                From high-performance websites and search visibility to AI-powered
+                automation and custom business software — we turn technology into
+                practical business growth.
+              </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                data-cursor-label="START"
-                className="pky-btn pky-btn-primary pky-btn-lg font-bold"
-              >
-                Start a Project
-                <ArrowRight size={18} />
-              </Link>
-              <Link
-                href="/portfolio"
-                data-cursor-label="WORK"
-                className="pky-btn pky-btn-secondary pky-btn-lg font-semibold"
-              >
-                <Play size={16} />
-                See the Work
-              </Link>
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-3 sm:mb-4">
+                <Link
+                  href="/contact"
+                  data-cursor-label="START"
+                  className="pky-btn pky-btn-primary pky-btn-md font-bold text-xs sm:text-sm"
+                >
+                  Book a Strategy Call
+                  <ArrowRight size={16} />
+                </Link>
+                <Link
+                  href="/services"
+                  data-cursor-label="WORK"
+                  className="pky-btn pky-btn-secondary pky-btn-md font-semibold text-xs sm:text-sm"
+                >
+                  <Play size={14} />
+                  Explore Our Solutions
+                </Link>
+              </div>
+
+              <div className="mb-5 sm:mb-6">
+                <Link
+                  href="/estimate"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-[11px] sm:text-xs font-semibold text-cyan-300 hover:bg-cyan-500/20 transition-all"
+                >
+                  <span>⚡ Scope & Cost Estimator</span>
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
+
+              {/* Trust signals */}
+              <div className="pt-3 sm:pt-4 border-t border-slate-800/80">
+                <p className="text-[10px] sm:text-[11px] text-[var(--pky-text-muted)] mb-1.5 uppercase tracking-wider font-mono">
+                  Helping businesses grow with
+                </p>
+                <div className="flex flex-wrap items-center gap-3 sm:gap-5">
+                  {["Websites", "SEO", "AI Automation", "Custom Software", "Digital Marketing"].map((item) => (
+                    <span key={item} className="text-xs text-slate-300 font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Scroll To Explode Prompt at bottom */}
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300"
-          style={{ opacity: heroOpacity }}
-        >
-          <div className="w-5 h-9 rounded-full border-2 border-cyan-400/50 flex justify-center p-1">
-            <span className="w-1.5 h-2.5 rounded-full bg-cyan-400 animate-bounce" />
-          </div>
-          <span className="text-[10px] font-mono tracking-widest text-cyan-300 uppercase">
-            Scroll to Explode 3D Space
-          </span>
         </div>
 
         {/* =========================================================
@@ -498,8 +530,8 @@ export function VoxelHero3D() {
                 <div className="p-6 flex flex-col justify-between h-[calc(100%-44px)] bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-bold text-xs text-white">
-                        P
+                      <div className="w-8 h-7 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-bold text-[11px] text-white">
+                        PKY
                       </div>
                       <span className="text-xs font-bold text-white tracking-wide">
                         Enterprise Growth Portal
@@ -549,11 +581,18 @@ export function VoxelHero3D() {
           </div>
         </div>
 
-        {/* Bottom Technical Status Bar (as seen in Cannyworx video) */}
-        <div className="relative z-20 px-8 py-4 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
+        {/* Bottom Technical Status Bar */}
+        <div className="relative z-20 h-11 px-6 sm:px-8 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400 shrink-0">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#00d2ff]" />
             <span>HUMAN × AI DIGITAL STUDIO</span>
+          </div>
+          <div
+            className="flex items-center gap-1.5 text-cyan-400/80 font-mono text-[10px] tracking-wider transition-opacity duration-300 hidden sm:flex"
+            style={{ opacity: heroOpacity }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+            <span>SCROLL TO EXPLODE 3D SPACE</span>
           </div>
           <div>
             <span>01 / 04 • DIGITAL ASSETS</span>

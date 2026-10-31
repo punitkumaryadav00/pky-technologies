@@ -9,6 +9,7 @@ import {
   Palette,
   Bot,
 } from "lucide-react";
+import { PKYLogoMark } from "@/components/ui/PKYLogo";
 
 const serviceLinks = [
   { label: "Website Development", href: "/services/web-development" },
@@ -173,10 +174,8 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[var(--pky-border)] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-md bg-gradient-to-br from-[var(--pky-accent)] to-[var(--pky-cyan)] flex items-center justify-center font-bold text-white text-xs">
-              P
-            </div>
+          <div className="flex items-center gap-2.5">
+            <PKYLogoMark className="w-7 h-8" />
             <span className="text-sm text-[var(--pky-text-muted)]">
               © 2026 PKY Technologies. All rights reserved.
             </span>
