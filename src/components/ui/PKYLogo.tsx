@@ -61,38 +61,14 @@ export function PKYLogo({
     <div className={`flex items-center gap-2.5 group select-none ${className}`}>
       <PKYLogoMark className={sizeClasses} glow={glow} />
 
-      {variant === "mark" ? null : variant === "navbar" ? (
-        <div className="flex flex-col leading-none">
-          <div className="flex items-baseline gap-1.5">
-            <span className="text-lg sm:text-xl font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-              PKY
-            </span>
-            <span className="text-xs sm:text-sm font-semibold tracking-tight text-slate-300 group-hover:text-white transition-colors">
-              Technologies
-            </span>
-          </div>
-          <span className="text-[9px] font-mono tracking-widest text-cyan-400/80 uppercase mt-0.5">
-            Innovate &bull; Build &bull; Grow
+      {variant === "mark" ? null : (
+        <div className="flex items-baseline gap-1.5 leading-none">
+          <span className="text-lg sm:text-xl font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors">
+            PKY
           </span>
-        </div>
-      ) : (
-        /* Full Variant with Tagline */
-        <div className="flex flex-col leading-none">
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-              PKY
-            </span>
-            <span className="text-base font-semibold tracking-tight text-slate-200">
-              Technologies
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5 mt-1.5 text-[10px] tracking-wider uppercase font-medium text-slate-400">
-            <span>Innovate</span>
-            <span className="inline-block w-1 h-1 rounded-full bg-cyan-400" />
-            <span>Build</span>
-            <span className="inline-block w-1 h-1 rounded-full bg-cyan-400" />
-            <span>Grow</span>
-          </div>
+          <span className="text-xs sm:text-sm font-semibold tracking-tight text-slate-300 group-hover:text-white transition-colors">
+            Technologies
+          </span>
         </div>
       )}
     </div>
