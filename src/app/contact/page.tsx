@@ -47,11 +47,19 @@ const guarantees = [
 const directChannels = [
   {
     icon: MessageSquare,
-    title: "Instant WhatsApp Chat",
-    desc: "Need immediate answers? Connect with our technical advisory on WhatsApp.",
-    action: "Chat on WhatsApp",
-    href: "https://wa.me/919876543210?text=Hello%20PKY%20Technologies,%20I%20would%20like%20to%20discuss%20a%20project%20inquiry.",
+    title: "Founder Direct WhatsApp",
+    desc: "Connect directly with Punit Kumar Yadav (Founder & CEO) for strategy & architecture.",
+    action: "+91 74191 61235 (Chat Now)",
+    href: "https://wa.me/917419161235?text=Hello%20Punit,%20I%20would%20like%20to%20discuss%20a%20project%20with%20PKY%20Technologies.",
     highlight: true,
+  },
+  {
+    icon: Phone,
+    title: "Co-Founder Direct Line",
+    desc: "Direct contact line for Sneha Bishnoi (Co-Founder & Head of Operations).",
+    action: "+91 87085 72286",
+    href: "tel:+918708572286",
+    highlight: false,
   },
   {
     icon: Mail,
@@ -59,14 +67,6 @@ const directChannels = [
     desc: "Send your comprehensive RFP or project documentation directly to our inbox.",
     action: "contact@pkytechnologies.com",
     href: "mailto:contact@pkytechnologies.com",
-    highlight: false,
-  },
-  {
-    icon: Phone,
-    title: "Direct Client Line",
-    desc: "Speak with our enterprise solutions desk (Mon–Sat, 9:00 AM – 8:00 PM IST).",
-    action: "+91 (0) 98765 43210",
-    href: "tel:+919876543210",
     highlight: false,
   },
 ];

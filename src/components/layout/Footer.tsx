@@ -129,28 +129,39 @@ export function Footer() {
             <h3 className="text-sm font-semibold mb-5 text-[var(--pky-text-primary)]">
               Get In Touch
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:hello@pkytechnologies.com"
+                  href="mailto:contact@pkytechnologies.com"
                   className="flex items-center gap-2 text-sm text-[var(--pky-text-muted)] hover:text-[var(--pky-accent-light)] transition-colors"
                 >
                   <Mail size={14} />
-                  <span>[Placeholder] hello@pkytechnologies.com</span>
+                  <span>contact@pkytechnologies.com</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+910000000000"
+                  href="https://wa.me/917419161235?text=Hello%20Punit,%20I%20would%20like%20to%20discuss%20a%20project%20with%20PKY%20Technologies."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-[var(--pky-text-muted)] hover:text-emerald-400 transition-colors"
+                >
+                  <Phone size={14} />
+                  <span>Founder WhatsApp: +91 74191 61235</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+918708572286"
                   className="flex items-center gap-2 text-sm text-[var(--pky-text-muted)] hover:text-[var(--pky-accent-light)] transition-colors"
                 >
                   <Phone size={14} />
-                  <span>[Placeholder] +91 00000 00000</span>
+                  <span>Co-Founder: +91 87085 72286</span>
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-[var(--pky-text-muted)]">
                 <MapPin size={14} className="mt-0.5 shrink-0" />
-                <span>[Placeholder — Add verified business address]</span>
+                <span>Cyber Hub, Sector 24, Gurugram / Delhi NCR</span>
               </li>
             </ul>
 
