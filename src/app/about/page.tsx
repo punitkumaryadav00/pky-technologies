@@ -18,13 +18,29 @@ import { Counter } from "@/components/ui/Counter";
 import { FoundersSection } from "@/components/home/FoundersSection";
 
 export const metadata: Metadata = {
-  title: "About Us | PKY Technologies — Engineering Digital Dominance",
+  title: "About Us | PKY Technologies — Best Web Developers & Web Designing Agency",
   description:
-    "Learn about PKY Technologies: our engineering philosophy, our senior multidisciplinary team, and why we build high-performance web applications, AI automations, and growth systems for ambitious businesses.",
+    "Learn about PKY Technologies: our engineering philosophy, our founders Punit Kumar Yadav & Sneha Bishnoi, and why we are recognized among the best web developers, app developers, and web designing agencies.",
+  keywords: [
+    "About PKY Technologies",
+    "PKY",
+    "pky technologies",
+    "Sneha Bishnoi",
+    "Punit Kumar Yadav",
+    "Sneha Bishnoi Co-Founder",
+    "best web developers",
+    "best web designing agencies",
+    "best app developers",
+    "leadership PKY Technologies",
+  ],
+  alternates: {
+    canonical: "https://pkytechnologies.com/about",
+  },
   openGraph: {
-    title: "About PKY Technologies — The Engineering-First Digital Partner",
+    title: "About PKY Technologies — Best Web Developers & Web Designing Agency",
     description:
-      "We replace bloated legacy agency models with ultra-fast Next.js architecture, AI automation, and measurable revenue engineering.",
+      "Led by Punit Kumar Yadav and Sneha Bishnoi. Replacing legacy agency models with ultra-fast Next.js architecture, AI automation, and measurable revenue engineering.",
+    url: "https://pkytechnologies.com/about",
   },
 };
 

@@ -32,6 +32,8 @@ const industryLinks = [
 
 const companyLinks = [
   { label: "About Us", href: "/about" },
+  { label: "Sneha Bishnoi (Co-Founder)", href: "/team/sneha-bishnoi" },
+  { label: "Punit Kumar Yadav (Founder)", href: "/team/punit-kumar-yadav" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Insights & Blog", href: "/insights" },
   { label: "Contact", href: "/contact" },

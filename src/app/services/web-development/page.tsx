@@ -3,9 +3,29 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Globe, Monitor, ShoppingCart, Rocket, Wrench, Gauge } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Website Development Services",
+  title: "Best Web Developers & Web Designing Agencies | PKY Technologies",
   description:
-    "Professional website development services by PKY Technologies — business websites, e-commerce, landing pages, redesigns, and speed optimization.",
+    "Ranked among the best web developers and best web designing agencies. PKY Technologies builds high-performance Next.js websites, custom e-commerce, web applications, and landing pages.",
+  keywords: [
+    "best web developers",
+    "best web designing agencies",
+    "web designing",
+    "best app developers",
+    "website development services",
+    "Next.js web developers",
+    "custom web development",
+    "PKY Technologies",
+    "PKY",
+  ],
+  alternates: {
+    canonical: "https://pkytechnologies.com/services/web-development",
+  },
+  openGraph: {
+    title: "Best Web Developers & Web Designing Agencies | PKY Technologies",
+    description:
+      "Enterprise Next.js web applications, custom websites, and digital experiences engineered for sub-second performance.",
+    url: "https://pkytechnologies.com/services/web-development",
+  },
 };
 
 const services = [

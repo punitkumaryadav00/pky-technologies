@@ -10,16 +10,23 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: [
+          "Googlebot",
+          "Google-Extended",
+          "Bingbot",
           "GPTBot",
           "ChatGPT-User",
+          "OAI-SearchBot",
           "ClaudeBot",
-          "PerplexityBot",
-          "Google-Extended",
           "anthropic-ai",
+          "PerplexityBot",
+          "Applebot",
+          "Applebot-Extended",
+          "Cohere-ai",
         ],
-        allow: "/",
+        allow: ["/", "/llms.txt", "/llms-full.txt", "/sitemap.xml"],
       },
     ],
     sitemap: "https://pkytechnologies.com/sitemap.xml",
+    host: "https://pkytechnologies.com",
   };
 }

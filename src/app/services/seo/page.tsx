@@ -3,8 +3,28 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Search, MapPin, BarChart3, FileText, Target, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "SEO & Digital Marketing Services",
-  description: "SEO, local SEO, Google Ads, content strategy, and conversion optimization services by PKY Technologies.",
+  title: "SEO & Generative Engine Optimization (GEO) Services | PKY Technologies",
+  description:
+    "Dominate Google rankings and AI search engines (ChatGPT, Gemini, Perplexity) with PKY Technologies' enterprise SEO and Generative Engine Optimization (GEO) strategies.",
+  keywords: [
+    "SEO services",
+    "Generative Engine Optimization",
+    "GEO services",
+    "Google ranking agency",
+    "AI search optimization",
+    "PKY Technologies SEO",
+    "best SEO agency",
+    "local SEO Google Business",
+  ],
+  alternates: {
+    canonical: "https://pkytechnologies.com/services/seo",
+  },
+  openGraph: {
+    title: "SEO & Generative Engine Optimization (GEO) Services | PKY Technologies",
+    description:
+      "Rank #1 on Google and get cited first by ChatGPT, Gemini, and AI search engines with PKY Technologies' technical SEO & GEO frameworks.",
+    url: "https://pkytechnologies.com/services/seo",
+  },
 };
 
 const services = [

@@ -9,6 +9,8 @@ import {
   CheckCircle2,
   Camera,
   Phone,
+  Award,
+  ExternalLink,
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
@@ -47,6 +49,8 @@ function WhatsappIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
 
 interface Founder {
   name: string;
+  slug: string;
+  profileUrl: string;
   role: string;
   title: string;
   initials: string;
@@ -68,6 +72,8 @@ interface Founder {
 const founders: Founder[] = [
   {
     name: "Punit Kumar Yadav",
+    slug: "punit-kumar-yadav",
+    profileUrl: "/team/punit-kumar-yadav",
     role: "Founder & Chief Executive Officer",
     title: "Chief Architect & Technology Lead",
     initials: "PKY",
@@ -91,22 +97,25 @@ const founders: Founder[] = [
   },
   {
     name: "Sneha Bishnoi",
+    slug: "sneha-bishnoi",
+    profileUrl: "/team/sneha-bishnoi",
     role: "Co-Founder & Head of Operations",
     title: "Product Delivery & Client Growth Lead",
     initials: "SB",
     image: "/images/team/sneha.jpg?v=2",
     svgFallback: "/images/team/sneha.svg",
-    bio: "Computer Engineer, HSBTE Topper, and DRDO CEPTAM Qualifier. Sneha directs cross-functional delivery sprints, client success pipelines, and product growth execution at PKY Technologies, ensuring every client platform transitions from technical blueprint into market-ready deployment with zero tech debt and measurable conversion performance.",
+    bio: "Computer Engineer, HSBTE State Topper, and DRDO CEPTAM Qualifier. Sneha directs cross-functional delivery sprints, client success pipelines, and product growth execution at PKY Technologies, ensuring every client platform transitions from technical blueprint into market-ready deployment with zero tech debt and measurable conversion performance.",
     focus: [
       "Computer Engineering",
-      "HSBTE Topper & DRDO CEPTAM",
-      "Operations & Agile Sprints",
-      "Product Strategy & Growth",
+      "HSBTE State Board Topper",
+      "DRDO CEPTAM Qualifier",
+      "Agile Sprints & Delivery",
     ],
     metrics: { label: "Milestone Delivery", value: "100% On-Time" },
     links: {
       linkedin: "https://linkedin.com/in/snehabishnoi",
       twitter: "https://twitter.com/snehabishnoi",
+      whatsapp: "https://wa.me/918708572286?text=Hello%20Sneha,%20I%20would%20like%20to%20discuss%20a%20project%20with%20PKY%20Technologies.",
       phone: "+91 87085 72286",
       email: "mailto:sneha@pkytechnologies.com",
     },
@@ -170,172 +179,202 @@ function FounderCard({ founder, index }: { founder: Founder; index: number }) {
   };
 
   return (
-    <SpotlightCard
-      delay={index * 0.15}
-      cursorLabel="FOUNDER"
-      className="p-6 sm:p-8 relative group h-full flex flex-col justify-between"
-    >
-      <div>
-        {/* Large Prominent Executive Portrait Photo Section */}
-        <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 p-[2px] bg-gradient-to-tr from-cyan-400/40 via-indigo-500/30 to-purple-600/40 border border-cyan-400/30 group-hover:border-cyan-400/60 shadow-xl shadow-cyan-950/40 transition-all duration-500">
-          <div className="w-full h-full rounded-[14px] overflow-hidden bg-slate-950 relative flex items-center justify-center">
-            {!hasFailedAll ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={currentSrc}
-                alt={founder.name}
-                onError={handleError}
-                className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700"
-              />
-            ) : (
-              /* Sleek Cyber Monogram Fallback */
-              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-6 text-center">
-                <span className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 tracking-tight mb-2">
-                  {founder.initials}
-                </span>
-                <span className="text-xs font-mono text-cyan-300 tracking-wider">
-                  PKY TECHNOLOGIES
+    <div id={founder.slug} itemScope itemType="https://schema.org/Person" className="h-full">
+      <SpotlightCard
+        delay={index * 0.15}
+        cursorLabel="LEADERSHIP"
+        className="p-6 sm:p-8 relative group h-full flex flex-col justify-between"
+      >
+        <div>
+          {/* Large Prominent Executive Portrait Photo Section */}
+          <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-6 p-[2px] bg-gradient-to-tr from-cyan-400/40 via-indigo-500/30 to-purple-600/40 border border-cyan-400/30 group-hover:border-cyan-400/60 shadow-xl shadow-cyan-950/40 transition-all duration-500">
+            <div className="w-full h-full rounded-[14px] overflow-hidden bg-slate-950 relative flex items-center justify-center">
+              {!hasFailedAll ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={currentSrc}
+                  alt={`${founder.name} - ${founder.role} at PKY Technologies`}
+                  onError={handleError}
+                  itemProp="image"
+                  className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-700"
+                />
+              ) : (
+                /* Sleek Cyber Monogram Fallback */
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-6 text-center">
+                  <span className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 tracking-tight mb-2">
+                    {founder.initials}
+                  </span>
+                  <span className="text-xs font-mono text-cyan-300 tracking-wider">
+                    PKY TECHNOLOGIES
+                  </span>
+                </div>
+              )}
+
+              {/* Subtle Gradient Vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 pointer-events-none" />
+
+              {/* Top Status Badge */}
+              <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-slate-700 text-[10px] font-mono font-semibold text-emerald-400 flex items-center gap-1.5 shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+                <span>ACTIVE LEADERSHIP</span>
+              </div>
+
+              {/* Bottom Role Pill */}
+              <div className="absolute bottom-3 left-3">
+                <span className="px-3.5 py-1.5 rounded-full bg-slate-950/90 backdrop-blur-md border border-cyan-400/40 text-cyan-200 text-xs font-mono font-bold tracking-wide shadow-lg flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                  <span itemProp="jobTitle">{founder.role}</span>
                 </span>
               </div>
-            )}
-
-            {/* Subtle Gradient Vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 pointer-events-none" />
-
-            {/* Top Status Badge */}
-            <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md border border-slate-700 text-[10px] font-mono font-semibold text-emerald-400 flex items-center gap-1.5 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              <span>ACTIVE LEADERSHIP</span>
-            </div>
-
-            {/* Bottom Role Pill */}
-            <div className="absolute bottom-3 left-3">
-              <span className="px-3.5 py-1.5 rounded-full bg-slate-950/90 backdrop-blur-md border border-cyan-400/40 text-cyan-200 text-xs font-mono font-bold tracking-wide shadow-lg flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                <span>{founder.role}</span>
-              </span>
             </div>
           </div>
-        </div>
 
-        {/* Name & Titles */}
-        <div className="mb-4">
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
-            {founder.name}
-          </h3>
-          <p className="text-sm text-cyan-300 font-semibold mt-1">
-            {founder.title}
-          </p>
-        </div>
-
-        {/* Bio */}
-        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-6">
-          {founder.bio}
-        </p>
-
-        {/* Core Expertise Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {founder.focus.map((tag) => (
-            <span
-              key={tag}
-              className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] font-medium text-slate-300"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Direct Contact Pill */}
-        {founder.links.whatsapp && founder.links.phone ? (
-          <div className="mb-6">
-            <a
-              href={founder.links.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-500/50 text-xs font-mono font-semibold transition-all group/wa"
-              title={`Chat with ${founder.name} on WhatsApp`}
-            >
-              <WhatsappIcon className="w-3.5 h-3.5 text-emerald-400 group-hover/wa:scale-110 transition-transform" />
-              <span>WhatsApp: {founder.links.phone}</span>
-            </a>
+          {/* Name & Titles with Link to Executive Profile */}
+          <div className="mb-4">
+            <div className="flex items-center justify-between gap-2">
+              <h3
+                className="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-cyan-300 transition-colors tracking-tight"
+                itemProp="name"
+              >
+                {founder.name}
+              </h3>
+              <Link
+                href={founder.profileUrl}
+                className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 shrink-0"
+                title={`View ${founder.name}'s Profile`}
+              >
+                <span>Profile</span>
+                <ExternalLink size={12} />
+              </Link>
+            </div>
+            <p className="text-sm text-cyan-300 font-semibold mt-1">
+              {founder.title}
+            </p>
           </div>
-        ) : founder.links.phone ? (
-          <div className="mb-6">
-            <a
-              href={`tel:${founder.links.phone.replace(/\s+/g, "")}`}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-400/40 text-xs font-mono font-medium transition-colors"
-              title={`Call ${founder.name}`}
-            >
-              <Phone size={13} className="text-cyan-400" />
-              <span>Contact: {founder.links.phone}</span>
-            </a>
-          </div>
-        ) : null}
-      </div>
 
-      {/* Footer Metrics & Social Links */}
-      <div className="pt-5 border-t border-slate-800/80 flex items-center justify-between mt-auto">
-        <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
-          <CheckCircle2 size={15} />
-          <span className="font-mono">{founder.metrics.value}</span>
-        </div>
-
-        {/* Social Icons */}
-        <div className="flex items-center gap-2">
-          {founder.links.whatsapp && (
-            <a
-              href={founder.links.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400/40 hover:bg-emerald-500/10 transition-all"
-              aria-label={`WhatsApp ${founder.name}`}
-              title={`WhatsApp: ${founder.links.phone || ""}`}
-            >
-              <WhatsappIcon />
-            </a>
-          )}
-          {founder.links.linkedin && (
-            <a
-              href={founder.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
-              aria-label={`${founder.name} LinkedIn`}
-            >
-              <LinkedinIcon />
-            </a>
-          )}
-          {founder.links.github && (
-            <a
-              href={founder.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
-              aria-label={`${founder.name} GitHub`}
-            >
-              <GithubIcon />
-            </a>
-          )}
-          {founder.links.twitter && (
-            <a
-              href={founder.links.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
-              aria-label={`${founder.name} Twitter`}
-            >
-              <TwitterIcon />
-            </a>
-          )}
-          <a
-            href={founder.links.email}
-            className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
-            aria-label={`Email ${founder.name}`}
+          {/* Bio */}
+          <p
+            className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-5"
+            itemProp="description"
           >
-            <Mail size={14} />
-          </a>
+            {founder.bio}
+          </p>
+
+          {/* Core Expertise Tags */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {founder.focus.map((tag) => (
+              <span
+                key={tag}
+                className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] font-medium text-slate-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Direct Profile CTA Button */}
+          <div className="mb-5">
+            <Link
+              href={founder.profileUrl}
+              className="inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400/50 text-xs font-semibold transition-all group/cta"
+            >
+              <span>View Full Credentials & Biography</span>
+              <ArrowRight size={14} className="group-hover/cta:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* WhatsApp / Phone Direct Button */}
+          {founder.links.whatsapp && founder.links.phone ? (
+            <div className="mb-6">
+              <a
+                href={founder.links.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-500/50 text-xs font-mono font-semibold transition-all group/wa"
+                title={`Chat with ${founder.name} on WhatsApp`}
+              >
+                <WhatsappIcon className="w-3.5 h-3.5 text-emerald-400 group-hover/wa:scale-110 transition-transform" />
+                <span>WhatsApp: {founder.links.phone}</span>
+              </a>
+            </div>
+          ) : founder.links.phone ? (
+            <div className="mb-6">
+              <a
+                href={`tel:${founder.links.phone.replace(/\s+/g, "")}`}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-cyan-300 hover:border-cyan-400/40 text-xs font-mono font-medium transition-colors"
+                title={`Call ${founder.name}`}
+              >
+                <Phone size={13} className="text-cyan-400" />
+                <span>Contact: {founder.links.phone}</span>
+              </a>
+            </div>
+          ) : null}
         </div>
-      </div>
-    </SpotlightCard>
+
+        {/* Footer Metrics & Social Links */}
+        <div className="pt-5 border-t border-slate-800/80 flex items-center justify-between mt-auto">
+          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
+            <CheckCircle2 size={15} />
+            <span className="font-mono">{founder.metrics.value}</span>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-2">
+            {founder.links.whatsapp && (
+              <a
+                href={founder.links.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:border-emerald-400/40 hover:bg-emerald-500/10 transition-all"
+                aria-label={`WhatsApp ${founder.name}`}
+                title={`WhatsApp: ${founder.links.phone || ""}`}
+              >
+                <WhatsappIcon />
+              </a>
+            )}
+            {founder.links.linkedin && (
+              <a
+                href={founder.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
+                aria-label={`${founder.name} LinkedIn`}
+              >
+                <LinkedinIcon />
+              </a>
+            )}
+            {founder.links.github && (
+              <a
+                href={founder.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
+                aria-label={`${founder.name} GitHub`}
+              >
+                <GithubIcon />
+              </a>
+            )}
+            {founder.links.twitter && (
+              <a
+                href={founder.links.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
+                aria-label={`${founder.name} Twitter`}
+              >
+                <TwitterIcon />
+              </a>
+            )}
+            <a
+              href={founder.links.email}
+              className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/10 transition-all"
+              aria-label={`Email ${founder.name}`}
+            >
+              <Mail size={14} />
+            </a>
+          </div>
+        </div>
+      </SpotlightCard>
+    </div>
   );
 }

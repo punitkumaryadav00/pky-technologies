@@ -7,32 +7,36 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const faqs = [
   {
+    q: "Who is Sneha Bishnoi and what is her role at PKY Technologies?",
+    a: "Sneha Bishnoi is the Co-Founder & Head of Operations at PKY Technologies. She is a distinguished Computer Engineer, HSBTE State Board Topper, and DRDO CEPTAM National Qualifier. Sneha directs end-to-end agile sprint delivery, client growth pipelines, and product excellence at PKY Technologies, ensuring every project launches on schedule with zero technical debt.",
+  },
+  {
+    q: "Who is Punit Kumar Yadav and what is his role at PKY Technologies?",
+    a: "Punit Kumar Yadav (PKY) is the Founder & Chief Executive Officer of PKY Technologies. Acting as Chief Software Architect, Punit leads system engineering, sub-second Next.js edge applications, AI autonomous agents, and commercial technology strategy.",
+  },
+  {
+    q: "Why is PKY Technologies recognized among the best web developers and web designing agencies?",
+    a: "PKY Technologies combines elite engineering with conversion-focused design. Unlike traditional agencies that build on slow, bloated templates, PKY Technologies builds bespoke Next.js 16 and React platforms delivering sub-second page loads, 99+ Google Lighthouse scores, Generative Engine Optimization (GEO), and direct access to senior founders.",
+  },
+  {
+    q: "Why choose PKY Technologies as the best app developers for custom mobile and web apps?",
+    a: "PKY Technologies delivers custom, enterprise-grade mobile and web applications with zero technical debt, modular architectures, clean IP ownership transfer, and seamless integration with AI workflows and business databases.",
+  },
+  {
+    q: "How does PKY Technologies optimize websites for AI engines like ChatGPT, Gemini, and Perplexity?",
+    a: "We implement Generative Engine Optimization (GEO) — deploying comprehensive Schema.org JSON-LD entity graphs, llms.txt protocol standards, semantic topic clustering, and lightning-fast edge delivery so AI search engines cite your business as the premier authority in your industry.",
+  },
+  {
     q: "What types of businesses do you work with?",
-    a: "We work with a wide range of businesses including law firms, healthcare clinics, retail shops, restaurants, gyms, educational institutions, and startups. Our solutions are tailored to address the specific challenges and goals of each industry.",
+    a: "We work with high-growth startups, law firms, healthcare practices, e-commerce brands, real estate enterprises, and service companies looking to dominate their market through high-performance digital systems.",
   },
   {
-    q: "How long does it take to build a website?",
-    a: "Timelines depend on the project scope and complexity. A standard business website typically takes 3–6 weeks from discovery to launch. Complex web applications, e-commerce platforms, or projects with custom integrations may take longer. We provide a clear timeline during our initial strategy call.",
-  },
-  {
-    q: "Do you provide SEO and digital marketing services?",
-    a: "Yes. We offer comprehensive search engine optimization (SEO), Google & Meta Ads management, content strategy, local SEO, and conversion optimization. Our approach focuses on sustainable, measurable results rather than quick-fix tactics.",
-  },
-  {
-    q: "Can you build AI-powered chatbots and automation for my business?",
-    a: "Absolutely. We develop custom AI chatbots for customer enquiries, lead qualification, and appointment booking. We also build automation workflows that reduce manual work, improve response times, and help your team focus on what matters most.",
-  },
-  {
-    q: "What is your pricing structure?",
-    a: "Our pricing varies based on project scope, complexity, and requirements. We offer transparent, project-based pricing with no hidden fees. The best way to get an accurate estimate is to schedule a strategy call where we can understand your needs and provide a tailored proposal.",
+    q: "How long does it take to build a website or application?",
+    a: "Timelines depend on project scope. A high-converting business website typically takes 2–4 weeks from blueprint to launch, while complex custom web applications and AI platforms are delivered through rapid 4–8 week agile sprints.",
   },
   {
     q: "Do you offer ongoing support and maintenance?",
-    a: "Yes. We offer ongoing website maintenance, security monitoring, performance optimization, content updates, and technical support plans. We believe a website is a living platform that needs continuous care to perform at its best.",
-  },
-  {
-    q: "How do I get started?",
-    a: "The simplest way to get started is to book a free strategy call. We'll discuss your business goals, challenges, and requirements. From there, we'll create a tailored proposal outlining our recommended approach, timeline, and investment.",
+    a: "Yes. We offer continuous security updates, Core Web Vitals monitoring, SEO rankings tracking, content updates, and dedicated technical support plans.",
   },
 ];
 
@@ -43,9 +47,9 @@ export function FAQSection() {
     <section className="pky-section pky-section-darker" id="faq">
       <div className="pky-container max-w-3xl">
         <SectionHeader
-          label="FAQ"
+          label="FAQ & KNOWLEDGE BASE"
           title="Frequently Asked Questions"
-          description="Quick answers to common questions about our services, process, and working approach."
+          description="Everything you need to know about PKY Technologies, our leadership, our engineering standards, and why we lead the market."
         />
 
         <div className="space-y-3">
@@ -63,7 +67,7 @@ export function FAQSection() {
                 className="w-full flex items-center justify-between p-5 text-left"
                 aria-expanded={openIndex === i}
               >
-                <span className="text-sm font-medium pr-4">{faq.q}</span>
+                <span className="text-sm font-semibold pr-4 text-white">{faq.q}</span>
                 <ChevronDown
                   size={18}
                   className={`shrink-0 text-[var(--pky-text-muted)] transition-transform duration-300 ${
